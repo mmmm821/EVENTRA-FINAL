@@ -1,0 +1,13 @@
+node_modules/
+.env
+*.log
+
+# Local database backup
+backend/data/db.json
+
+# Local AI/tooling files
+backend/.agents/
+backend/.claude/
+backend/.cursor/
+backend/.devin/
+backend/.windsurf/

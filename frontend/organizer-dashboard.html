@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFD500">
+<meta name="description" content="EVENTRA — discover events, book tickets and manage digital QR tickets.">
+<title>Organizer Dashboard — EVENTRA</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar" class="navbar"></div>
+
+<main class="container" style="padding-top:24px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <div>
+      <span class="badge badge-pink">Organizer</span>
+      <h2 style="margin-top:10px;font-size:24px;">Organizer Dashboard</h2>
+      <p style="color:var(--muted);margin-top:4px;">Manage your events and track performance.</p>
+    </div>
+    <button class="btn btn-yellow" id="createEventBtn">+ Create Event</button>
+  </div>
+
+  <div class="stats-grid" style="margin-top:24px;" id="statsGrid"></div>
+
+  <div class="section-title-row">
+    <h3 style="font-size:18px;">Recent Events</h3>
+  </div>
+  <div class="card">
+    <table class="data-table" style="padding:10px;">
+      <thead>
+        <tr><th>Event</th><th>Date</th><th>Sold / Capacity</th><th>Status</th><th></th></tr>
+      </thead>
+      <tbody id="recentEventsBody"></tbody>
+    </table>
+  </div>
+</main>
+
+<!-- Create Event modal -->
+<div id="createModal" class="hidden" style="position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;">
+  <div class="card card-pad" style="max-width:480px;width:100%;max-height:90vh;overflow:auto;">
+    <h3 style="font-size:18px;">Create Event</h3>
+    <form id="createEventForm" style="margin-top:14px;">
+      <div class="form-group"><label>Title</label><input class="form-control" id="f_title" required></div>
+      <div class="form-group"><label>Category</label><input class="form-control" id="f_category" placeholder="Hackathon, Festival, Workshop..." required></div>
+      <div class="form-group"><label>Venue</label><input class="form-control" id="f_venue" required></div>
+      <div class="form-group"><label>Date &amp; Time</label><input class="form-control" type="datetime-local" id="f_date" required></div>
+      <div class="form-group"><label>Description</label><textarea class="form-control" id="f_description" rows="3"></textarea></div>
+      <div class="form-group"><label>Image URL (optional)</label><input class="form-control" id="f_image" placeholder="https://..."></div>
+      <div class="form-group">
+        <label>Ticket Type</label>
+        <div style="display:flex;gap:8px;">
+          <input class="form-control" id="f_ticket_name" placeholder="General" value="General">
+          <input class="form-control" id="f_ticket_price" type="number" placeholder="Price ₹" value="299">
+          <input class="form-control" id="f_ticket_seats" type="number" placeholder="Seats" value="100">
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:10px;">
+        <button type="button" class="btn btn-block" id="cancelCreateBtn">Cancel</button>
+        <button type="submit" class="btn btn-yellow btn-block">Submit for Approval</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/organizer.js"></script>
+</body>
+</html>

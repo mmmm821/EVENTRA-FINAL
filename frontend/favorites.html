@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFD500">
+<meta name="description" content="EVENTRA — discover events, book tickets and manage digital QR tickets.">
+<title>Favorites — EVENTRA</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar" class="navbar"></div>
+
+<main class="container" style="padding-top:24px;">
+  <h2 style="font-size:24px;">Favorites</h2>
+  <p style="color:var(--muted);margin-top:6px;">Events you've saved for later.</p>
+
+  <div class="events-grid" id="favGrid" style="margin-top:24px;">
+    <!-- injected by favorites.js -->
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/favorites.js"></script>
+</body>
+</html>

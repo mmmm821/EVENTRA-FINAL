@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  password    String
+  role        String
+  createdAt   DateTime @default(now())
+  suspended   Boolean  @default(false)
+
+  favorites   Favorite[]
+  bookings    Booking[]
+  tickets     Ticket[]
+  events      Event[]  @relation("EventOrganizer")
+
+  @@map("users")
+}
+
+model Event {
+  id             String       @id @default(uuid())
+  title          String
+  category       String
+  organizerId    String
+  organizerName  String
+  venue          String
+  date           DateTime
+  description    String
+  tags           String[]
+  image          String
+  status         String
+  isLive         Boolean      @default(false)
+
+  organizer      User         @relation("EventOrganizer", fields: [organizerId], references: [id])
+  ticketTypes    TicketType[]
+  bookings       Booking[]
+  tickets        Ticket[]
+  favorites      Favorite[]
+
+  @@index([organizerId])
+  @@index([category])
+  @@index([date])
+  @@index([status])
+  @@map("events")
+}
+
+model TicketType {
+  id           String        @id @default(uuid())
+  eventId      String
+  name         String
+  price        Int
+  totalSeats   Int
+  bookedSeats  Int           @default(0)
+
+  event        Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  bookingItems BookingItem[]
+
+  @@index([eventId])
+  @@map("ticket_types")
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  userId    String
+  eventId   String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@index([eventId])
+  @@map("favorites")
+}
+
+model Booking {
+  id         String        @id @default(uuid())
+  eventId    String
+  userId     String
+  amount     Int
+  status     String
+  createdAt  DateTime      @default(now())
+  paymentId  String?
+  paidAt     DateTime?
+
+  event      Event         @relation(fields: [eventId], references: [id])
+  user       User          @relation(fields: [userId], references: [id])
+  items      BookingItem[]
+  tickets    Ticket[]
+
+  @@index([eventId])
+  @@index([userId])
+  @@index([status])
+  @@map("bookings")
+}
+
+model BookingItem {
+  id           String     @id @default(uuid())
+  bookingId    String
+  ticketTypeId String
+  name         String
+  price        Int
+  quantity     Int
+
+  booking      Booking    @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  ticketType   TicketType @relation(fields: [ticketTypeId], references: [id])
+
+  @@index([bookingId])
+  @@index([ticketTypeId])
+  @@map("booking_items")
+}
+
+model Ticket {
+  id             String    @id @default(uuid())
+  bookingId      String
+  eventId        String
+  eventTitle     String
+  userId         String
+  ticketTypeName String
+  price          Int
+  token          String    @unique
+  qrDataUrl      String?
+  checkedIn      Boolean   @default(false)
+  checkedInAt    DateTime?
+  createdAt      DateTime  @default(now())
+
+  booking        Booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  event          Event     @relation(fields: [eventId], references: [id])
+  user           User      @relation(fields: [userId], references: [id])
+
+  @@index([bookingId])
+  @@index([eventId])
+  @@index([userId])
+  @@index([checkedIn])
+  @@map("tickets")
+}

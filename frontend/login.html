@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFD500">
+<meta name="description" content="EVENTRA — discover events, book tickets and manage digital QR tickets.">
+<title>Login — EVENTRA</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar" class="navbar"></div>
+
+<main class="auth-shell">
+  <div class="card card-pad">
+    <span class="badge badge-yellow">Welcome Back</span>
+    <h2 style="margin-top:12px;font-size:26px;">Login to EVENTRA</h2>
+    <p style="color:var(--muted);font-size:13px;margin-top:6px;">Discover • Book • Attend</p>
+
+    <form id="loginForm" style="margin-top:20px;">
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="email" id="email" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" id="password" required placeholder="••••••••">
+      </div>
+      <button class="btn btn-pink btn-block" type="submit">Login →</button>
+    </form>
+
+    <p style="margin-top:16px;font-size:13px;">
+      Don't have an account? <a href="register.html" style="font-weight:700;color:var(--pink);">Register</a>
+    </p>
+
+    <div class="card-pad" style="margin-top:10px;padding:14px;border:2px dashed var(--ink);border-radius:8px;font-size:12px;">
+      <strong>Demo accounts</strong> (password: <code>password123</code>)<br>
+      attendee@eventra.dev &nbsp;•&nbsp; organizer@eventra.dev &nbsp;•&nbsp; admin@eventra.dev
+    </div>
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFD500">
+<meta name="description" content="EVENTRA — discover events, book tickets and manage digital QR tickets.">
+<title>Register — EVENTRA</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar" class="navbar"></div>
+
+<main class="auth-shell">
+  <div class="card card-pad">
+    <span class="badge badge-cyan">Join EVENTRA</span>
+    <h2 style="margin-top:12px;font-size:26px;">Create your account</h2>
+
+    <form id="registerForm" style="margin-top:20px;">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input class="form-control" type="text" id="name" required placeholder="Jane Doe">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="email" id="email" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" id="password" required minlength="6" placeholder="min. 6 characters">
+      </div>
+      <div class="form-group">
+        <label>I am registering as</label>
+        <select class="form-control" id="role">
+          <option value="attendee">Attendee — discover & book events</option>
+          <option value="organizer">Organizer — create & manage events</option>
+        </select>
+      </div>
+      <button class="btn btn-cyan btn-block" type="submit">Create Account →</button>
+    </form>
+
+    <p style="margin-top:16px;font-size:13px;">
+      Already have an account? <a href="login.html" style="font-weight:700;color:var(--pink);">Login</a>
+    </p>
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "eventra-backend",
+  "version": "1.0.0",
+  "description": "EVENTRA — Event Discovery & Ticket Booking Platform (backend API + static frontend server)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js && node --check controllers/auth.controller.js && node --check controllers/events.controller.js && node --check controllers/bookings.controller.js && node --check controllers/tickets.controller.js && node --check controllers/organizer.controller.js && node --check controllers/admin.controller.js",
+    "postinstall": "prisma skills sync || exit 0"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.23.1",
+    "prisma": "^7.10.0",
+    "qrcode": "^1.5.3",
+    "uuid": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

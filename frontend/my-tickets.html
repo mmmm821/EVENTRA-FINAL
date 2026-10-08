@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFD500">
+<meta name="description" content="EVENTRA — discover events, book tickets and manage digital QR tickets.">
+<title>My Tickets — EVENTRA</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar" class="navbar"></div>
+
+<main class="container" style="padding-top:24px;">
+  <span class="badge badge-green">Confirmed</span>
+  <h2 style="margin-top:10px;font-size:24px;">My Tickets</h2>
+  <p style="color:var(--muted);margin-top:6px;">Your confirmed bookings with unique QR codes.</p>
+
+  <div id="ticketsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px;">
+    <!-- injected by my-tickets.js -->
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/my-tickets.js"></script>
+</body>
+</html>

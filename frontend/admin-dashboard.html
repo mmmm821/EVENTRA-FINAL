@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFD500">
+<meta name="description" content="EVENTRA — discover events, book tickets and manage digital QR tickets.">
+<title>Admin Control Center — EVENTRA</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar" class="navbar"></div>
+
+<main class="container" style="padding-top:24px;">
+  <span class="badge badge-cyan">Admin</span>
+  <h2 style="margin-top:10px;font-size:24px;">Admin Control Center</h2>
+  <p style="color:var(--muted);margin-top:4px;">Moderate events, manage users and monitor transactions.</p>
+
+  <div class="stats-grid" style="margin-top:24px;" id="statsGrid"></div>
+
+  <div style="display:flex;gap:10px;margin-top:26px;flex-wrap:wrap;">
+    <div class="pill active" data-tab="events">Events</div>
+    <div class="pill" data-tab="users">Users</div>
+    <div class="pill" data-tab="transactions">Transactions</div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div id="tabEvents">
+      <table class="data-table" style="padding:10px;">
+        <thead><tr><th>Event</th><th>Organizer</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody id="eventsBody"></tbody>
+      </table>
+    </div>
+    <div id="tabUsers" class="hidden">
+      <table class="data-table" style="padding:10px;">
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody id="usersBody"></tbody>
+      </table>
+    </div>
+    <div id="tabTransactions" class="hidden">
+      <table class="data-table" style="padding:10px;">
+        <thead><tr><th>Event</th><th>User</th><th>Amount</th><th>Payment ID</th><th>Date</th></tr></thead>
+        <tbody id="transactionsBody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
